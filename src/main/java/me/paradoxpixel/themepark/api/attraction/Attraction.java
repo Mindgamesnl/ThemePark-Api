@@ -5,10 +5,7 @@ import me.paradoxpixel.themepark.api.attraction.component.Type;
 import me.paradoxpixel.themepark.api.event.attraction.StatusChangeEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.block.Sign;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import org.bukkit.entity.Player;
 
 public class Attraction {
 
@@ -42,6 +39,10 @@ public class Attraction {
         return location;
     }
 
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
     public Type getType() {
         return type;
     }
@@ -50,18 +51,16 @@ public class Attraction {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(Status status, Player player) {
         if(!type.hasStatus())
             return;
 
         if(!type.containsStatus(status))
             return;
 
-
-        Status old = this.status;
         this.status = status;
 
-        StatusChangeEvent event = new StatusChangeEvent(this,  old, status);
+        StatusChangeEvent event = new StatusChangeEvent(this,  player, this.status, status);
         Bukkit.getPluginManager().callEvent(event);
     }
 
