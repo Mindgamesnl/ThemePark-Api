@@ -54,8 +54,6 @@ public class API {
         if(!isRegion(id))
             return;
 
-        regions.remove(id.toLowerCase());
-
         HashMap<String, Attraction> map = new HashMap<>(attractions);
         for(Map.Entry<String, Attraction> entry : map.entrySet()) {
             Attraction attraction = entry.getValue();
@@ -67,6 +65,7 @@ public class API {
 
         RemoveRegionEvent event = new RemoveRegionEvent(getRegion(id));
         Bukkit.getPluginManager().callEvent(event);
+        regions.remove(id.toLowerCase());
     }
 
     public static void addAttraction(Attraction attraction) {
