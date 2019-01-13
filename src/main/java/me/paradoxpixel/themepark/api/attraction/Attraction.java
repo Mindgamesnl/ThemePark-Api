@@ -2,6 +2,7 @@ package me.paradoxpixel.themepark.api.attraction;
 
 import me.paradoxpixel.themepark.api.attraction.component.Status;
 import me.paradoxpixel.themepark.api.attraction.component.Type;
+import me.paradoxpixel.themepark.api.event.attraction.PreStatusChangeEvent;
 import me.paradoxpixel.themepark.api.event.attraction.StatusChangeEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -58,10 +59,14 @@ public class Attraction {
         if(!type.containsStatus(status))
             return;
 
-        this.status = status;
-
-        StatusChangeEvent event = new StatusChangeEvent(this,  player, this.status, status);
+        PreStatusChangeEvent event = new PreStatusChangeEvent(this,  player, this.status, status);
         Bukkit.getPluginManager().callEvent(event);
+        if(event.isCancelled())
+            return;
+
+        this.status = status;
+        StatusChangeEvent e = new StatusChangeEvent(this,  player, this.status, status);
+        Bukkit.getPluginManager().callEvent(e);
     }
 
 }
