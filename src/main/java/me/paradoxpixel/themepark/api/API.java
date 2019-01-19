@@ -67,11 +67,6 @@ public class API {
         Bukkit.getPluginManager().callEvent(event);
         regions.remove(id.toLowerCase());
     }
-    
-    public static void clearRegions() {
-        regions.clear();
-        attractions.clear();
-    }
 
     public static void addAttraction(Attraction attraction) {
         if(!isRegion(attraction.getRegion_id()))

@@ -3,7 +3,7 @@ package me.paradoxpixel.themepark.api.attraction.component;
 public enum Type {
 
     RIDE(true, Status.CLOSED, Status.CONSTRUCTION, Status.OPEN, Status.CLOSED, Status.MAINTENANCE, Status.MALFUNCTION),
-    SHOW(true, Status.CLOSED, Status.CONSTRUCTION, Status.ACTIVE, Status.INACTIVE),
+    SHOW(true, Status.INACTIVE, Status.CONSTRUCTION, Status.ACTIVE, Status.INACTIVE),
     GLOBAL(false, Status.GLOBAL);
 
     private boolean status;
@@ -20,7 +20,7 @@ public enum Type {
         return status;
     }
 
-    public Status getDefefault() {
+    public Status getDefault() {
         return def;
     }
 
