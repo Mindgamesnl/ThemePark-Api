@@ -11,6 +11,9 @@ public class LocationUtils {
             return null;
 
         World world = location.getWorld();
+        if(world == null)
+            return null;
+
         double x = location.getX();
         double y = location.getY();
         double z = location.getZ();
@@ -31,6 +34,9 @@ public class LocationUtils {
             return null;
 
         World world = Bukkit.getWorld(args[0]);
+        if(world == null)
+            return null;
+
         double x = Double.parseDouble(args[1]);
         double y = Double.parseDouble(args[2]);
         double z = Double.parseDouble(args[3]);

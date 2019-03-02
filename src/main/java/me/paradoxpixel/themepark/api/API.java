@@ -32,6 +32,9 @@ public class API {
     }
 
     public static boolean isRegion(String id) {
+        if(id == null || id.isEmpty())
+            return false;
+
         return regions.containsKey(id.toLowerCase());
     }
 
@@ -43,6 +46,9 @@ public class API {
     }
 
     public static Region getRegion(String id) {
+        if(id == null || id.isEmpty())
+            return null;
+
         return regions.get(id.toLowerCase());
     }
 
@@ -87,14 +93,23 @@ public class API {
     }
 
     public static boolean isAttraction(String id) {
+        if(id == null || id.isEmpty())
+            return false;
+
         return attractions.containsKey(id.toLowerCase());
     }
 
     public static Attraction getAttraction(String id) {
+        if(id == null || id.isEmpty())
+            return null;
+
         return attractions.get(id.toLowerCase());
     }
 
     public static Attraction getAttractionFromName(String name) {
+        if(name == null || name.isEmpty())
+            return null;
+
         for(Attraction attraction : attractions.values()) {
             if(!color(attraction.getName()).equals(name))
                 continue;
