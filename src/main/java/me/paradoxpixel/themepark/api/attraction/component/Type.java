@@ -40,20 +40,7 @@ public enum Type {
 
 
     public static Type getType(String string) {
-        if(string == null)
-            return null;
-
-        string = string.toUpperCase();
-        switch(string) {
-            case "RIDE":
-                return Type.RIDE;
-            case "SHOW":
-                return Type.SHOW;
-            case "GLOBAL":
-                return Type.GLOBAL;
-            default:
-                return null;
-        }
+        return valueOf(string.toUpperCase());
     }
 
 }
